@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Baako Consulting LLC. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="bcmarketplace" translate="label" sortOrder="300">
+            <label>BCMarketplace</label>
+        </tab>
+
+        <section id="bcmarketplace" translate="label" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>Base Settings</label>
+            <tab>bcmarketplace</tab>
+            <resource>BCMarketplace_Base::config</resource>
+            <group id="notifications" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Notifications</label>
+                <field id="enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Notifications</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Enable notifications to receive important product updates, announcements, and promotions from BCMarketplace modules.</comment>
+                </field>
+                <field id="subscribed_to" translate="label comment" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0" canRestore="1">
+                    <label>Subscribed to</label>
+                    <source_model>BCMarketplace\Base\Model\Config\Source\NotificationOptions</source_model>
+                    <comment>Select the types of notifications you wish to receive.</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>
+
